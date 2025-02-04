@@ -4,7 +4,6 @@ from PIL import Image, ImageTk
 import cv2
 import subprocess
 import webview
-from playsound import playsound  # For sound effects
 import pygame
 
 # Compatibility for older Pillow versions

@@ -9,7 +9,7 @@ from tkinter import Frame, Label
 from PIL import Image, ImageTk
 import subprocess
 
-subprocess.Popen(["python", r"C:\AI\Hand controller for games\but.py"])
+subprocess.Popen(["python", "GUI.py"])
 pyautogui.leftClick(2390,24)
 pyautogui.moveTo(1000,700)
 
