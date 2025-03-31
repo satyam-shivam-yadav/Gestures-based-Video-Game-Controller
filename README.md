@@ -1,8 +1,8 @@
-Gestures-Based Video Game Controller
+**Gestures-Based Video Game Controller**
 
 This project introduces an innovative way for users to play video games using hand gestures instead of traditional input devices. Additionally, it enables seamless system navigation through the program itself. An interactive GUI has been designed to let users effortlessly browse and select their desired games.
 
-Tech Stack
+**Tech Stack**
 
 Programming Language: Python
 
@@ -15,7 +15,7 @@ GUI Framework: Tkinter / PyQt
 Machine Learning Model: Custom gesture recognition using Mediapipe landmarks
 
 
-Features
+**Features**
 
 Hand Gesture Control: Play video games using intuitive hand gestures instead of a keyboard or controller.
 
