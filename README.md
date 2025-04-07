@@ -7,10 +7,10 @@
 <p align="center">Built with the tools and technologies:</p>
 <p align="center">
 	<img src="https://img.shields.io/badge/OpenCV-5C3EE8.svg?style=default&logo=OpenCV&logoColor=white" alt="OpenCV">
-	<img src="https://img.shields.io/badge/MediaPipe-00C2D7.svg?style=default&logo=Google&logoColor=white" alt="MediaPipe">
+	<img src="https://img.shields.io/badge/MediaPipe-FF6F00.svg?style=default&logo=MediaPipe&logoColor=white" alt="MediaPipe">
+	<img src="https://img.shields.io/badge/PyAutoGUI-4B8BBE.svg?style=default&logo=Python&logoColor=white" alt="PyAutoGUI">
+	<img src="https://img.shields.io/badge/Tkinter-FF69B4.svg?style=default&logo=Python&logoColor=white" alt="Tkinter">
 	<img src="https://img.shields.io/badge/Python-3776AB.svg?style=default&logo=Python&logoColor=white" alt="Python">
-	<img src="https://img.shields.io/badge/NumPy-013243.svg?style=default&logo=NumPy&logoColor=white" alt="NumPy">
-	<img src="https://img.shields.io/badge/PyAutoGUI-4B8BBE.svg?style=default&logo=python&logoColor=white" alt="PyAutoGUI">
 </p>
 
 ## Table of Contents
