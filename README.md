@@ -1,22 +1,140 @@
-# **Gestures-Based Video Game Controller**
+# Hand Gesture-Based Video Game Controller
 
-This project introduces an innovative way for users to play video games using hand gestures instead of traditional input devices. Additionally, it enables seamless system navigation through the program itself. An interactive GUI has been designed to let users effortlessly browse and select their desired games.
+<p align="center">
+	A vision-powered input system that transforms your hand gestures into live game controls.
+</p>
 
-# **Tech Stack**
+<p align="center">Built with the tools and technologies:</p>
+<p align="center">
+	<img src="https://img.shields.io/badge/OpenCV-5C3EE8.svg?style=default&logo=OpenCV&logoColor=white" alt="OpenCV">
+	<img src="https://img.shields.io/badge/MediaPipe-00C2D7.svg?style=default&logo=Google&logoColor=white" alt="MediaPipe">
+	<img src="https://img.shields.io/badge/Python-3776AB.svg?style=default&logo=Python&logoColor=white" alt="Python">
+	<img src="https://img.shields.io/badge/NumPy-013243.svg?style=default&logo=NumPy&logoColor=white" alt="NumPy">
+	<img src="https://img.shields.io/badge/PyAutoGUI-4B8BBE.svg?style=default&logo=python&logoColor=white" alt="PyAutoGUI">
+</p>
 
-- **Programming Language:** Python  
-- **Computer Vision Library:** OpenCV  
-- **Hand Tracking Framework:** Mediapipe  
-- **GUI Framework:** Tkinter / PyQt  
-- **Machine Learning Model:** Custom gesture recognition using Mediapipe landmarks  
+## Table of Contents
 
-# **Features**
+- [Overview](#overview)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Project Roadmap](#project-roadmap)
+- [Problems Encountered](#problems-encountered)
+- [Future Plans](#future-plans)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
-- **Hand Gesture Control:** Play video games using intuitive hand gestures instead of a keyboard or controller.  
-- **Interactive GUI:** Easily browse and select games through a user-friendly interface.  
-- **Gesture-Based Navigation:** Move through menus and options using hand signals.  
-- **Real-Time Hand Tracking:** Uses Mediapipe for fast and accurate hand detection.  
-- **Multi-Game Compatibility:** Works with various video games by mapping gestures to corresponding keyboard/mouse inputs.  
-- **Low Latency Input:** Optimized for real-time responsiveness to ensure smooth gameplay.
+## Overview
 
-**This project enhances gaming interaction by providing an immersive, hands-free control experience.**
+**Hand Gesture Controller** is an intuitive tool that utilizes your webcam and real-time hand tracking to convert gestures into key presses, allowing you to control games or applications using just your hand. This is done using **MediaPipe** for hand landmark detection and **PyAutoGUI** for input simulation.
+
+Use-cases include:
+- Playing lightweight games (e.g. Dino Run, racing, Tetris) without any keyboard/mouse.
+- Accessibility enhancement for people with physical limitations.
+- Fun and engaging way to interact with computers!
+
+## Features
+
+- 🖐️ **Real-Time Hand Detection** using MediaPipe
+- 🎮 **Gesture Mappings to Game Controls** (e.g. move left, right, jump, shoot)
+- 🎥 **Webcam Feed with Landmark Overlay**
+- 🧠 **Custom Gesture Recognition** using angles, distances, or finger states
+- ⌨️ **Simulates Keystrokes/Mouse Events** with PyAutoGUI
+- ⚙️ **Easily Extendable for More Gestures & Controls**
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.7 or above
+- Webcam
+
+### Installation
+
+```bash
+git clone https://github.com/yourusername/hand-gesture-game-controller.git
+cd hand-gesture-game-controller
+pip install -r requirements.txt
+```
+
+### Usage
+
+To start the gesture controller:
+
+```bash
+python main.py
+```
+
+Ensure your webcam is connected. The script will display the video feed with hand landmarks and respond to predefined gestures.
+
+## Project Structure
+
+```
+hand-gesture-game-controller/
+│
+├── main.py                 # Main application logic
+├── gestures.py             # Gesture detection logic
+├── controller.py           # Mapping gestures to keyboard/mouse actions
+├── utils.py                # Utility functions
+├── requirements.txt
+└── README.md
+```
+
+## Project Roadmap
+
+- [x] Hand landmark detection
+- [x] Basic gesture recognition (fingers up/down)
+- [x] Trigger key events using PyAutoGUI
+- [ ] Create gesture configuration file for custom mapping
+- [ ] Add UI interface to customize controls
+- [ ] Optimize for FPS-sensitive games
+
+## Problems Encountered
+
+- **False Positives in Gesture Detection:**
+  > Solved by averaging over frames and applying a confidence threshold.
+
+- **Latency in Input Response:**
+  > Optimized frame size and reduced processing steps.
+
+- **Multi-Gesture Conflicts:**
+  > Introduced state buffers and action cooldowns.
+
+## Future Plans
+
+- Add hand orientation-based controls (e.g. tilt to steer)
+- Integrate voice commands alongside gestures
+- Train a custom ML model to classify complex gestures
+- Support multi-hand input (e.g. one hand for actions, one for movement)
+
+## Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+<details>
+<summary>Contributing Guidelines</summary>
+
+1. Fork the Repository  
+2. Clone the Project Locally  
+3. Create a Feature Branch  
+4. Commit Your Changes  
+5. Push and Open a PR
+
+</details>
+
+## License
+
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
+
+## Acknowledgments
+
+- [MediaPipe](https://google.github.io/mediapipe/) for real-time hand tracking.
+- [OpenCV](https://opencv.org/) for handling webcam and image processing.
+- [PyAutoGUI](https://pyautogui.readthedocs.io/en/latest/) for simulating keyboard/mouse input.
+- Thanks to open-source communities and contributors that inspire interactive project development.
+
