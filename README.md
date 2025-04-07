@@ -34,14 +34,14 @@
 **Hand Gesture Controller** is an intuitive tool that utilizes your webcam and real-time hand tracking to convert gestures into key presses, allowing you to control games or applications using just your hand. This is done using **MediaPipe** for hand landmark detection and **PyAutoGUI** for input simulation.
 
 Use-cases include:
-- Playing lightweight games (e.g. Dino Run, racing, Tetris) without any keyboard/mouse.
+- Playing lightweight games (e.g. Subway Surfer, Bubble Shooter and Asphalt 8 Airborne) without any keyboard/mouse.
 - Accessibility enhancement for people with physical limitations.
 - Fun and engaging way to interact with computers!
 
 ## Features
 
 - 🖐️ **Real-Time Hand Detection** using MediaPipe
-- 🎮 **Gesture Mappings to Game Controls** (e.g. move left, right, jump, shoot)
+- 🎮 **Gesture Mappings to Game Controls** (e.g. move left, right, jump)
 - 🎥 **Webcam Feed with Landmark Overlay**
 - 🧠 **Custom Gesture Recognition** using angles, distances, or finger states
 - ⌨️ **Simulates Keystrokes/Mouse Events** with PyAutoGUI
@@ -57,7 +57,7 @@ Use-cases include:
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/hand-gesture-game-controller.git
+git clone https://github.com/Xeno725/Gestures-based-Video-Game-Controller.git
 cd hand-gesture-game-controller
 pip install -r requirements.txt
 ```
