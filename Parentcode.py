@@ -89,43 +89,40 @@ def is_hand_closed(landmarks):
 def video_mode(previous_mode, current_mode):
     global video_window, lbl_video_2, cap2
 
-    # Only proceed if the mode has changed
     if previous_mode != current_mode:
-        # Close the previous video window if it exists
         if 'video_window' in globals() and video_window:
             video_window.destroy()
 
         # Create a new window for the current mode
         video_window = tk.Toplevel(root)
         video_window.title(f"{current_mode.capitalize()} Mode Tutorial")
-        video_window.geometry("600x400+1850+650")  # Set window size and position
+        video_window.geometry("600x400+1850+650") 
 
         lbl_video_2 = tk.Label(video_window)
         lbl_video_2.pack()
 
         # Load the appropriate video based on the mode
         if current_mode == "mouse":
-            video_path = r"C:\Users\asus\Downloads\mouse mode tutorial video - Made with Clipchamp.mp4"  # Replace with your mouse mode video path
+            video_path = "Manual Video\Mouse mode tutorial video.mp4"  
         elif current_mode == "game":
-            video_path = r"C:\Users\asus\Downloads\Game mode tutorial - Made with Clipchamp.mp4"  # Replace with your game mode video path
+            video_path = "Manual Video\Game mode tutorial - Made with Clipchamp.mp4"  
 
         cap2 = cv2.VideoCapture(video_path)
 
         def update_video():
             ret, frame_2 = cap2.read()
             if ret:
-                frame_2 = cv2.resize(frame_2, (600, 400))  # Resize to fit the window
+                frame_2 = cv2.resize(frame_2, (600, 400)) 
                 frame_2 = cv2.cvtColor(frame_2, cv2.COLOR_BGR2RGB)
                 img_2 = ImageTk.PhotoImage(Image.fromarray(frame_2))
                 lbl_video_2.config(image=img_2)
                 lbl_video_2.image = img_2
             else:
-                cap2.set(cv2.CAP_PROP_POS_FRAMES, 0)  # Restart the video if it ends
+                cap2.set(cv2.CAP_PROP_POS_FRAMES, 0)  # Restart the video
             lbl_video_2.after(10, update_video)
 
         update_video()
 
-# Function to check specific gestures for mouse actions
 def detect_mouse_gestures(left_hand_landmarks):
     if is_hand_closed(left_hand_landmarks):
         return "closed"
@@ -143,25 +140,21 @@ def detect_mouse_gestures(left_hand_landmarks):
 
     return None
 
-# Initialize tkinter window
 root = tk.Tk()
 root.title("Camera Feed")
 
 root.geometry("665x500+1850+100") 
 
-#Camera feed
 frame_camera = Frame(root, width=640, height=480, bg="black")
 frame_camera.grid(row=0, column=0, padx=10, pady=10)
 
 lbl_video = Label(frame_camera)
 lbl_video.pack()
 
-# Handle window close event
 def on_closing():
     cap.release()  # Release the camera
     root.destroy()  # Destroy the tkinter window
 
-# Initialize variables
 cap = cv2.VideoCapture(0)
 root.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -204,7 +197,6 @@ while cap.isOpened():
     if not ret:
         continue
 
-    # Flip frame horizontally for a mirrored view
     frame = cv2.flip(frame, 1)
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = hands.process(rgb_frame)
@@ -255,11 +247,11 @@ while cap.isOpened():
                 pyautogui.press('esc')
                 time.sleep(1)
 
-        # Handle game mode
+        # Game mode
         if game_mode_active:
             mode_text = "Game Mode"
             current_mode = "game"
-            # Add logic for game mode (if any)
+
             LEFT_THUMB_RAISED = False
             LEFT_INDEX_RAISED = False
             LEFT_MIDDLE_RAISED = False
@@ -283,7 +275,7 @@ while cap.isOpened():
                 if is_finger_raised(right_hand.landmark,12,9,0):
                     RIGHT_MIDDLE_RAISED = True
             
-            if LEFT_THUMB_RAISED:          #For pressing a
+            if LEFT_THUMB_RAISED:
                 if not a_pressed:
                     pyautogui.keyDown('a')
                     print("pressed a")
@@ -293,7 +285,7 @@ while cap.isOpened():
                 print("released a")
                 a_pressed = False
             
-            if RIGHT_THUMB_RAISED:         # For pressing d
+            if RIGHT_THUMB_RAISED:        
                 if not d_pressed:
                     pyautogui.keyDown('d')
                     print("pressed d")
@@ -425,10 +417,8 @@ while cap.isOpened():
                         delta_x = curr_index_x - prev_index_x
                         delta_y = curr_index_y - prev_index_y
 
-                        # Update the cursor position
                         pyautogui.move(delta_x, delta_y)
 
-                    # Update the previous position
                     prev_index_x, prev_index_y = curr_index_x, curr_index_y
 
                 elif is_finger_raised(right_hand.landmark,8,5,0) and is_finger_raised(right_hand.landmark,12,9,0):
@@ -453,29 +443,24 @@ while cap.isOpened():
                     prev_index_x, prev_index_y = None, None
                     middle_y_buffer.clear()
 
-        # Draw landmarks and mode text
         for hand_landmarks in hand_landmarks_list:
             mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
     else:
         mode_text = "Mouse Mode"
 
-    # Display the mode name
     cv2.putText(frame, mode_text, (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
     video_mode(previous_mode, current_mode)
     previous_mode = current_mode
 
-    # Convert the frame to PIL format and update the tkinter Label
     img = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
     imgtk = ImageTk.PhotoImage(image=img)
     lbl_video.imgtk = imgtk
     lbl_video.configure(image=imgtk)
 
-    # Update the tkinter GUI
     root.update_idletasks()
     root.update()
 
-    # Exit on pressing 'q'
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
